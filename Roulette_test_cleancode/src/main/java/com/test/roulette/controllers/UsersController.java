@@ -31,14 +31,17 @@ public class UsersController {
 		return "Login";
 	}
 	@RequestMapping(value="/LoginForm", method=RequestMethod.POST)
-	public String save(UsersDTO user) {
+	public String save(UsersDTO user,Map<String,Object> model) {
+		String Redirect = "";
 		String uniqueID = UUID.randomUUID().toString();
-		System.out.print(uniqueID);
 		user.setIdUser(uniqueID);
 		user.setFounds(0);
-		userService.save(user);
-		return "redirect:FindUsers";
+		if(user.getPassword() != "" && user.getFirstName() != "") {
+			userService.save(user);
+			Redirect = "redirect:FindUsers";
+		}else {
+			Redirect="redirect:Login";
+		}
+		return Redirect;
 	}
-	
-
 }

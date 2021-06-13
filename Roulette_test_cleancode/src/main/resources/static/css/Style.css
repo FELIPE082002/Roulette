@@ -1,0 +1,15 @@
+.principal{
+    background-color: #319cef;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.principal #Header{
+    text-align: center;
+}
+.alert_Empty{
+    position: absolute;
+    top: 0;
+    z-index: 5;
+}
