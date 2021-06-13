@@ -13,7 +13,7 @@ public class UsersDTO {
 	
 	private String password;
 	
-	private int founds;
+	private Double founds;
 	
 	public UsersDTO(){
 		
@@ -51,11 +51,11 @@ public class UsersDTO {
 		this.password = password;
 	}
 
-	public int getFounds() {
+	public Double getFounds() {
 		return founds;
 	}
 
-	public void setFounds(int founds) {
+	public void setFounds(Double founds) {
 		this.founds = founds;
 	}
 

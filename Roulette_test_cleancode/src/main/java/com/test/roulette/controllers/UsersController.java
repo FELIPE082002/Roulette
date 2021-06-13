@@ -17,7 +17,8 @@ import com.test.roulette.services.IUsersService;
 @Controller
 public class UsersController {
 	
-	SignInDTO S = new SignInDTO();
+	SignInDTO userSesion = new SignInDTO();
+	UsersDTO user = new UsersDTO();	
 	
 	@Autowired
 	private IUsersService userService;
@@ -40,10 +41,10 @@ public class UsersController {
 		String Redirect = "";
 		String uniqueID = UUID.randomUUID().toString();
 		user.setIdUser(uniqueID);
-		user.setFounds(0);
+		user.setFounds(0.0);
 		if(user.getPassword() != "" && user.getEmail() != "") {
 			userService.save(user);
-			Redirect = "redirect:FindUsers";
+			Redirect = "redirect:SignIn";
 		}else {
 			Redirect="redirect:Login";
 		}
@@ -61,9 +62,9 @@ public class UsersController {
 	public String validate(SignInDTO user,Model model) {
 		String Redirect = "";
 		SignInDTO s = userService.validateUser(user.getvEmail());
-		this.S = s;
+		this.userSesion = s;
 		if ( s.getEmail().equals(user.getvEmail()) && s.getPassword().equals(user.getvPassword())) {
-			Redirect = "redirect:FindUsers";
+			Redirect = "redirect:Home";
 		}else {
 			Redirect="redirect:SignIn";
 		}
@@ -72,7 +73,12 @@ public class UsersController {
 	
 	@RequestMapping(value="/Home")
 	public String showId(Map<String, Object> model) {
-		model.put('firstName',)
+		String id = this.userSesion.getId();
+		this.user = userService.findById(id);
+		String name = this.user.getFirstName();
+		String lastName = this.user.getLastName();
+		model.put("firstName",name);
+		model.put("lastName",lastName);
 		return "Home";
 	}
 

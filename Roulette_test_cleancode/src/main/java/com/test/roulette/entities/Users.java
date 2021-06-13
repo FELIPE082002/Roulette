@@ -26,7 +26,7 @@ public class Users{
 	private String password;
 	@NotNull
 	@Column(name="founds")
-	private int founds;
+	private Double founds;
 	
 	public Users() {
 		super();
@@ -71,11 +71,11 @@ public class Users{
 		this.password = password;
 	}
 
-	public int getFounds() {
+	public Double getFounds() {
 		return founds;
 	}
 
-	public void setFounds(int founds) {
+	public void setFounds(Double founds) {
 		this.founds = founds;
 	}
 }

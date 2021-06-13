@@ -78,13 +78,14 @@ public class UsersServiceImpl implements IUsersService {
 
 	@Override
 	public UsersDTO findById(String id) {
-		List<Users> user = repo.findId(id); 
+		List<Object[]> user = repo.findId(id);
 		UsersDTO U = new UsersDTO();
-		for(Users u : user) {
-			U.setEmail(u.getEmail());
-			U.setFirstName(u.getFirstName());
-			U.setLastName(u.getLastName());
-			U.setFounds(u.getFounds());
+		for(Object[] u : user) {
+			U.setEmail(u[0].toString());
+			U.setFirstName(u[1].toString());
+			U.setLastName(u[2].toString());
+			U.setFounds(Double.parseDouble(u[3].toString()));
+			
 		}		
 		return U;
 	}
