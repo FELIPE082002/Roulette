@@ -6,6 +6,7 @@ public class BetsDTO {
 	private int betValue;
 	private String bet;
 	private boolean result;
+	private String idRoulettesRoulettes;
 	
 	public BetsDTO(){
 		
@@ -41,5 +42,13 @@ public class BetsDTO {
 
 	public void setResult(boolean result) {
 		this.result = result;
+	}
+
+	public String getIdRoulettesRoulettes() {
+		return idRoulettesRoulettes;
+	}
+
+	public void setIdRoulettesRoulettes(String idRoulettesRoulettes) {
+		this.idRoulettesRoulettes = idRoulettesRoulettes;
 	}
 }
