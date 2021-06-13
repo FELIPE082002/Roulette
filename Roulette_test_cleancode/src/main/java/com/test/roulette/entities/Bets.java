@@ -53,7 +53,7 @@ public class Bets {
 		this.bet = bet;
 	}
 
-	public boolean isResult() {
+	public boolean getResult() {
 		return result;
 	}
 
