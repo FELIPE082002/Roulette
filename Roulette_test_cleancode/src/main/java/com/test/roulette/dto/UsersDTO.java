@@ -1,7 +1,7 @@
 package com.test.roulette.dto;
 
 
-public class UserDTO {
+public class UsersDTO {
 
 	private String idUser;
 
@@ -13,7 +13,7 @@ public class UserDTO {
 	
 	private int founds;
 	
-	public UserDTO(){
+	public UsersDTO(){
 		
 	}
 

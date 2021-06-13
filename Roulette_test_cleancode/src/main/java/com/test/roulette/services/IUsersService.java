@@ -2,8 +2,8 @@ package com.test.roulette.services;
 
 import java.util.List;
 
-import com.test.roulette.entities.Users;
+import com.test.roulette.dto.UsersDTO;
 
 public interface IUsersService {
-	public List<Users> findAll();
+	public List<UsersDTO> findAll();
 }
