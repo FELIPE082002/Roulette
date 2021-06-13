@@ -5,6 +5,8 @@ public class UsersDTO {
 
 	private String idUser;
 
+	private String email;
+	
 	private String firstName;
 
 	private String lastName;
@@ -55,6 +57,14 @@ public class UsersDTO {
 
 	public void setFounds(int founds) {
 		this.founds = founds;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	
 	

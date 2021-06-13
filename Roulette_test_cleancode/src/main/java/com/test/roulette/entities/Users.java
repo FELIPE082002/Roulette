@@ -13,6 +13,9 @@ public class Users{
 	@Column(name="id_users")
 	private String idUsers;
 	@NotNull
+	@Column(name="email")
+	private String email;
+	@NotNull
 	@Column(name="first_name")
 	private String firstName;
 	@NotNull
@@ -28,7 +31,14 @@ public class Users{
 	public Users() {
 		super();
 	}
+	
+	public String getEmail() {
+		return email;
+	}
 
+	public void setEmail(String email) {
+		this.email = email;
+	}
 	public String getIdUser() {
 		return idUsers;
 	}
