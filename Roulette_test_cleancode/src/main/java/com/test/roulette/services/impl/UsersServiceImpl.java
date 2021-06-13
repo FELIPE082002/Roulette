@@ -32,6 +32,16 @@ public class UsersServiceImpl implements IUsersService {
 		}
 		return lstUsersDTO;
 	}
-	
-	
+
+	@Override
+	public void save(UsersDTO user) {
+		Users u = new Users();
+		u.setFirstName(user.getFirstName());
+		u.setIdUser(user.getIdUser());
+		u.setLastName(user.getLastName());
+		u.setPassword(user.getPassword());
+		u.setFounds(user.getFounds());
+		repo.save(u);
+	}
+
 }
