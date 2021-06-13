@@ -1,22 +1,28 @@
 package com.test.roulette.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 import com.sun.istack.NotNull;
 
 @Entity
-public class Users {
+public class Users{
 	
 	@Id
-	private String idUser;
+	@Column(name="id_users")
+	private String idUsers;
 	@NotNull
+	@Column(name="first_name")
 	private String firstName;
 	@NotNull
+	@Column(name="last_name")
 	private String lastName;
 	@NotNull
+	@Column(name="password")
 	private String password;
 	@NotNull
+	@Column(name="founds")
 	private int founds;
 	
 	public Users() {
@@ -24,11 +30,11 @@ public class Users {
 	}
 
 	public String getIdUser() {
-		return idUser;
+		return idUsers;
 	}
 
 	public void setIdUser(String idUser) {
-		this.idUser = idUser;
+		this.idUsers = idUser;
 	}
 
 	public String getFirstName() {

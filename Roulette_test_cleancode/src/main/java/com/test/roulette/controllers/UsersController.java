@@ -16,6 +16,6 @@ public class UsersController {
 	@RequestMapping(value="/FindUsers", method = RequestMethod.GET)
 	public String consult(Model model) {
 		model.addAttribute("users",userService.findAll());
-		return "FundUsers";
+		return "FindUsers";
 	}
 }
