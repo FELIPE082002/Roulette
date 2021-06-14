@@ -31,6 +31,7 @@ body{
 }
 .open{
 	text-align:  center;
+	padding: 10px;
 }
 .disable{
 	display: none;
@@ -43,4 +44,21 @@ body{
 }
 #cvv{
 	width: 80px;
+}
+#betForm{
+	display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#openBet{
+	margin-left:10px;
+	width: 200px;
+}
+#amountBet{
+	width: 200px;
+}
+#colorBet{
+	width: 200px;
+	height: 40px;
+	border-radius: 5px;
 }
