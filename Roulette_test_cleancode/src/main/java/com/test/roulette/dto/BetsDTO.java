@@ -2,53 +2,53 @@ package com.test.roulette.dto;
 
 public class BetsDTO {
 
-	private String idBets;
-	private int betValue;
+	private int idBets;
+	private Double betValue;
 	private String bet;
-	private boolean result;
-	private String idRoulettesRoulettes;
+	private String result;
+	private int idRoulettesRoulettes;
 	
-	public BetsDTO(){
-		
+	public BetsDTO() {
+		super();
 	}
-
-	public String getIdBets() {
+	
+	public int getIdBets() {
 		return idBets;
 	}
-
-	public void setIdBets(String idBets) {
+	
+	public void setIdBets(int idBets) {
 		this.idBets = idBets;
 	}
-
-	public int getBetValue() {
+	
+	public Double getBetValue() {
 		return betValue;
 	}
-
-	public void setBetValue(int betValue) {
+	
+	public void setBetValue(Double betValue) {
 		this.betValue = betValue;
 	}
-
+	
 	public String getBet() {
 		return bet;
 	}
-
+	
 	public void setBet(String bet) {
 		this.bet = bet;
 	}
-
-	public boolean isResult() {
+	
+	public String getResult() {
 		return result;
 	}
-
-	public void setResult(boolean result) {
+	
+	public void setResult(String result) {
 		this.result = result;
 	}
-
-	public String getIdRoulettesRoulettes() {
+	
+	public int getIdRoulettesRoulettes() {
 		return idRoulettesRoulettes;
 	}
-
-	public void setIdRoulettesRoulettes(String idRoulettesRoulettes) {
+	
+	public void setIdRoulettesRoulettes(int idRoulettesRoulettes) {
 		this.idRoulettesRoulettes = idRoulettesRoulettes;
 	}
 }

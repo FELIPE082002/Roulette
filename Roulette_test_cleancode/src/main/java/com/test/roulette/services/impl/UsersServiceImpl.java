@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.test.roulette.dto.SignInDTO;
 import com.test.roulette.dto.UsersDTO;
@@ -90,4 +91,9 @@ public class UsersServiceImpl implements IUsersService {
 		return U;
 	}
 
+	@Override
+	@Transactional
+	public void updateFounds(String id, Double amount) {
+		repo.updateFounds(id, amount);
+	}
 }

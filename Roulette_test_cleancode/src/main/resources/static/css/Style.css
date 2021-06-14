@@ -35,3 +35,12 @@ body{
 .disable{
 	display: none;
 }
+#Month{
+	width: 80px;
+}
+#year{
+	width: 80px;
+}
+#cvv{
+	width: 80px;
+}

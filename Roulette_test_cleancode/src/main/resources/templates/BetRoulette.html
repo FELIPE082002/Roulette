@@ -13,7 +13,6 @@
       <form class="d-flex">
         <a class="navbar-brand " th:text="${firstName}"></a>
         <a class="navbar-brand" th:text="${lastName}"></a>
-        <a class="disable" th:text="${id}"></a>
         <a class="btn btn-outline-success" th:href="@{/Login}" type="submit">Sign Out</a>
       </form>
     </div>
@@ -24,26 +23,32 @@
       <a class="navbar-brand" id="founds" th:text="|Founds: ${founds}|"></a>
         <a class="btn btn-outline-success .md-2" th:href="@{/Pay}" type="submit">add Founds</a>
     </div>
-    <table class="table table-dark table-borderless">
+    <div class="roulette">
+    
+    </div>
+    <div class="bet">
+    	
+    </div>
+    <div class="betTable">
+    	<table class="table table-dark table-hover">
       <thead>
         <tr>
           <th scope="col">#</th>
-          <th scope="col">Status</th>
-          <th scope="col">Enter</th>
-          <th scope="col">Close</th>
+          <th scope="col">Value</th>
+          <th scope="col">Bet</th>
+          <th scope="col">Result</th>
         </tr>
       </thead>
       </tbody>
-        <tr th:each="r: ${roulette}">
-          <th scope="row" th:text="${r.idRoulettes}"></th>
-          <td th:text="${r.status}"></td>
-          <td ><a class="btn btn-outline-success .md-2" th:href="@{/Bet/} + ${r.idRoulettes}" type="submit">ENTER</a></td>
-          <td ><a class="btn btn-outline-danger" th:href="@{/UpdateForm/} + ${r.idRoulettes}" type="submit">CLOSE</a></td>
+        <tr th:each="b: ${bets}">
+          <th scope="row" th:text="${b.idBets}"></th>
+          <td th:text="${b.betValue}"></td>
+          <td th:text="${b.bet}"></td>
+          <td th:text="${b.result}"></td>
+          
         </tr>
       </tbody>
     </table>
-    <div class="open">
-   	 <a class="btn btn-outline-success" type="submit" th:href="@{/RouletteForm}">Open New Roulette</a>
     </div>
   </div>
 </body>

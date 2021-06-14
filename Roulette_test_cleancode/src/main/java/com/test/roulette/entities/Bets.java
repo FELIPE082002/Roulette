@@ -9,39 +9,41 @@ import com.sun.istack.NotNull;
 @Entity
 public class Bets {
 	@Id
-	private String idBets;
+	@Column(name="id_bet")
+	private int idBets;
 	
-	@Column(name="BetValue")
+	@Column(name="bet_value")
 	@NotNull
-	private int betValue;
+	private Double betValue;
 	
-	@Column(name="Bet")
+	@Column(name="bet")
 	@NotNull
 	private String bet;
 	
 	@NotNull
-	private boolean result;
+	@Column(name="result")
+	private String result;
 	
-	@Column(name="idRoulettes_Roulettes")
-	private String idRoulettesRoulettes;
+	@Column(name="id_roulettes_roulettes")
+	private int idRoulettesRoulettes;
 
 	public Bets() {
 		super();
 	}
 
-	public String getIdBets() {
+	public int getIdBets() {
 		return idBets;
 	}
 
-	public void setIdBets(String idBets) {
+	public void setIdBets(int idBets) {
 		this.idBets = idBets;
 	}
 
-	public int getBetValue() {
+	public Double getBetValue() {
 		return betValue;
 	}
 
-	public void setBetValue(int betValue) {
+	public void setBetValue(Double betValue) {
 		this.betValue = betValue;
 	}
 
@@ -53,21 +55,20 @@ public class Bets {
 		this.bet = bet;
 	}
 
-	public boolean getResult() {
+	public String getResult() {
 		return result;
 	}
 
-	public void setResult(boolean result) {
+	public void setResult(String result) {
 		this.result = result;
 	}
 
-	public String getIdRoulettesRoulettes() {
+	public int getIdRoulettesRoulettes() {
 		return idRoulettesRoulettes;
 	}
 
-	public void setIdRoulettesRoulettes(String idRoulettesRoulettes) {
+	public void setIdRoulettesRoulettes(int idRoulettesRoulettes) {
 		this.idRoulettesRoulettes = idRoulettesRoulettes;
 	}
-	
 	
 }

@@ -10,4 +10,5 @@ public interface IUsersService {
 	public void save(UsersDTO user);
 	public SignInDTO validateUser(String email);
 	public UsersDTO findById(String id);
+	public void updateFounds(String id,Double amount);
 }

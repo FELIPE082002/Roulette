@@ -75,6 +75,17 @@ public class UsersController {
 		return Redirect;
 	}
 	
+	@RequestMapping(value="/Pay")
+	public String Payments(UsersDTO user,Map<String, Object> model,Model Model) {
+		Model.addAttribute("user",user);
+		model.put("title", "Add Founds");
+		return "Pay";
+	}
+	@RequestMapping(value="/PayForm")
+	public String PaymentsForm(UsersDTO user,Map<String,Object> model) {
+		userService.updateFounds(this.user.getIdUser(),user.getFounds());
+		return "redirect:Home";
+	}
 
 	
 }

@@ -12,35 +12,41 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.test.roulette.dto.RegisterDTO;
 import com.test.roulette.dto.RoulettesDTO;
 import com.test.roulette.dto.UsersDTO;
+import com.test.roulette.services.IBetsService;
 import com.test.roulette.services.IRegisterService;
 import com.test.roulette.services.IRoulettesService;
 import com.test.roulette.services.IUsersService;
 
 @Controller
-public class RouletteController{
-	
-	UsersDTO user = new UsersDTO(); 
-	
-	
+public class BetController {
 	@Autowired
-	IRoulettesService rouletteServices;
+	IBetsService betService;
 	@Autowired
 	IRegisterService registerServices;
 	@Autowired
 	IUsersService userService;
+	@Autowired
+	IRoulettesService rouletteServices;
+	
+	RoulettesDTO roulette = new RoulettesDTO();
+	UsersDTO user = new UsersDTO(); 
 	
 	String name,lastName,founds;
 	
-	@RequestMapping(value="/Home", method = RequestMethod.GET)
+	@RequestMapping(value="/Bet/{id}")
+	public String update(@PathVariable(value="id") Integer id) {
+		roulette.setIdRoulettes(id);
+		return "redirect:/BetForm";
+	}
+	@RequestMapping(value="/BetRoulette", method = RequestMethod.GET)
 	public String consult(Model model,Map<String, Object> Model) {
-		model.addAttribute("roulette",rouletteServices.findAll());
+		model.addAttribute("bets",betService.findAll());
 		Model.put("founds", founds);
 		Model.put("firstName",name);
 		Model.put("lastName",lastName);
-		return "Home";
+		return "BetRoulette";
 	}
-	
-	@RequestMapping(value="/HomeForm")
+	@RequestMapping(value="/BetForm")
 	public String showId(Map<String, Object> model,Model models) {
 		RegisterDTO r = registerServices.findId();
 		String id = r.getIdlastUser();
@@ -49,19 +55,8 @@ public class RouletteController{
 		name = this.user.getFirstName();
 		lastName = this.user.getLastName();
 		founds = this.user.getFounds().toString();
-		return "redirect:Home";
+		return "redirect:BetRoulette";
 	}
-	@RequestMapping(value="/RouletteForm")
-	public String save(RoulettesDTO r) {
-		r.setStatus(true);
-		r.setIdUsers_Users(this.user.getIdUser());
-		rouletteServices.save(r);
-		return "redirect:Home";
-	}
-	@RequestMapping(value="/UpdateForm/{id}")
-	public String update(@PathVariable(value="id") Integer id) {
-		rouletteServices.update(id);
-		return "redirect:/Home";
-	}
+	
 	
 }
