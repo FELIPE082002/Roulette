@@ -38,13 +38,13 @@
         <tr th:each="r: ${roulette}">
           <th scope="row" th:text="${r.idRoulettes}"></th>
           <td th:text="${r.status}"></td>
-          <td ><a class="btn btn-outline-success .md-2" th:href="@{/addFounds}" type="submit">ENTER</a></td>
-          <td ><a class="btn btn-outline-danger" th:href="@{/addFounds}" type="submit">CLOSE</a></td>
+          <td ><a class="btn btn-outline-success .md-2" th:href="@{/addFounds/} + ${r.idRoulettes}" type="submit">ENTER</a></td>
+          <td ><a class="btn btn-outline-danger" th:href="@{/UpdateForm/} + ${r.idRoulettes}" type="submit">CLOSE</a></td>
         </tr>
       </tbody>
     </table>
     <div class="open">
-   	 <button class="btn btn-outline-success" type="submit">Open New Roulette</button>
+   	 <a class="btn btn-outline-success" type="submit" th:href="@{/RoulleteForm}">Open New Roulette</a>
     </div>
   </div>
 </body>

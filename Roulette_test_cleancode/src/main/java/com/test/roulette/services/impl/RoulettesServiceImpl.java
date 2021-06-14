@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.test.roulette.dto.RoulettesDTO;
 import com.test.roulette.entities.Roulettes;
@@ -31,4 +32,18 @@ public class RoulettesServiceImpl implements IRoulettesService {
 		return lstRoulettesDTO;
 	}
 
+	@Override
+	public void save(RoulettesDTO roulette) {
+		Roulettes r = new Roulettes();
+		r.setStatus(roulette.getStatus());
+		r.setIdUsers_Users(roulette.getIdUsers_Users());
+		repo.save(r);
+	}
+
+	
+	@Override
+	@Transactional
+	public void update(Integer id) {
+		repo.updateRoulette(id);
+	}
 }

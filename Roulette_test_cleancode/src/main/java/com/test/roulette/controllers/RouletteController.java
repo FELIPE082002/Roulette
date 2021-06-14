@@ -5,11 +5,12 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.test.roulette.dto.RegisterDTO;
-import com.test.roulette.dto.SignInDTO;
+import com.test.roulette.dto.RoulettesDTO;
 import com.test.roulette.dto.UsersDTO;
 import com.test.roulette.services.IRegisterService;
 import com.test.roulette.services.IRoulettesService;
@@ -19,7 +20,7 @@ import com.test.roulette.services.IUsersService;
 public class RouletteController{
 	
 	UsersDTO user = new UsersDTO(); 
-	SignInDTO userSesion = new SignInDTO();
+	
 	
 	@Autowired
 	IRoulettesService rouleteServices;
@@ -44,10 +45,23 @@ public class RouletteController{
 		RegisterDTO r = registerServices.findId();
 		String id = r.getIdlastUser();
 		this.user = userService.findById(id);
+		this.user.setIdUser(id);
 		name = this.user.getFirstName();
 		lastName = this.user.getLastName();
 		founds = this.user.getFounds().toString();
 		return "redirect:Home";
+	}
+	@RequestMapping(value="/RoulleteForm")
+	public String save(RoulettesDTO r) {
+		r.setStatus(true);
+		r.setIdUsers_Users(this.user.getIdUser());
+		rouleteServices.save(r);
+		return "redirect:Home";
+	}
+	@RequestMapping(value="/UpdateForm/{id}")
+	public String update(@PathVariable(value="id") Integer id) {
+		rouleteServices.update(id);
+		return "redirect:/Home";
 	}
 	
 }

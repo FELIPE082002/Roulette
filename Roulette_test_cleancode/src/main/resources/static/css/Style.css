@@ -1,3 +1,10 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+body{
+	background-color: #19181e;
+}
 .principal{
     background-color: #19181e;
     height: 100vh;
