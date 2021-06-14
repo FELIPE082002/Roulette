@@ -38,8 +38,8 @@
         <tr th:each="r: ${roulette}">
           <th scope="row" th:text="${r.idRoulettes}"></th>
           <td th:text="${r.status}"></td>
-          <td ><a class="btn btn-outline-success .md-2" th:href="@{/addFounds}" type="submit">add Founds</a></td>
-          <td ><a class="btn btn-outline-success .md-2" th:href="@{/addFounds}" type="submit">add Founds</a></td>
+          <td ><a class="btn btn-outline-success .md-2" th:href="@{/addFounds}" type="submit">ENTER</a></td>
+          <td ><a class="btn btn-outline-danger" th:href="@{/addFounds}" type="submit">CLOSE</a></td>
         </tr>
       </tbody>
     </table>

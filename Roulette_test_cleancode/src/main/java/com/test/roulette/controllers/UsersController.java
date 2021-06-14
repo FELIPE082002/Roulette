@@ -12,23 +12,26 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.test.roulette.dto.SignInDTO;
 import com.test.roulette.dto.UsersDTO;
+import com.test.roulette.services.IRegisterService;
 import com.test.roulette.services.IUsersService;
 
 @Controller
 public class UsersController {
 	
-	private SignInDTO userSesion = new SignInDTO();
-	private UsersDTO user = new UsersDTO();	
+	SignInDTO userSesion = new SignInDTO();
+	UsersDTO user = new UsersDTO();	
 	
 	@Autowired
 	private IUsersService userService;
+	@Autowired
+	private IRegisterService registerService;
 	
 	@RequestMapping(value="/FindUsers", method = RequestMethod.GET)
 	public String consult(Model model) {
 		model.addAttribute("users",userService.findAll());
 		return "FindUsers";
 	}
-	
+
 	@RequestMapping(value="/Login")
 	public String create(Map<String, Object> model){
 		UsersDTO user = new UsersDTO();
@@ -64,26 +67,14 @@ public class UsersController {
 		SignInDTO s = userService.validateUser(user.getvEmail());
 		this.userSesion = s;
 		if ( s.getEmail().equals(user.getvEmail()) && s.getPassword().equals(user.getvPassword())) {
-			Redirect = "redirect:Home";
+			registerService.save(s.getId());
+			Redirect = "redirect:HomeForm";
 		}else {
 			Redirect="redirect:SignIn";
 		}
 		return Redirect;
 	}
 	
-	@RequestMapping(value="/Home")
-	public String showId(Map<String, Object> model,Model models) {
-		String id = this.userSesion.getId();
-		this.user = userService.findById(id);
-		String name = this.user.getFirstName();
-		String lastName = this.user.getLastName();
-		String founds = this.user.getFounds().toString();
-		model.put("founds", founds);
-		model.put("firstName",name);
-		model.put("lastName",lastName);
-		models.addAttribute("id",id);
-		return "Home";
-	}
 
 	
 }
