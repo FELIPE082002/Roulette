@@ -8,7 +8,7 @@ import com.sun.istack.NotNull;
 @Entity
 public class Roulettes {
 	@Id
-	private String idRoulettes;
+	private int idRoulettes;
 	@NotNull
 	private Boolean status;
 	@NotNull
@@ -18,10 +18,10 @@ public class Roulettes {
 		super();
 	}
 	
-	public String getIdRoulettes() {
+	public int getIdRoulettes() {
 		return idRoulettes;
 	}
-	public void setIdRoulettes(String idRoulettes) {
+	public void setIdRoulettes(int idRoulettes) {
 		this.idRoulettes = idRoulettes;
 	}
 	public Boolean getStatus() {

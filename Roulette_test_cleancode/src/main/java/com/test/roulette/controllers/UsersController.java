@@ -17,8 +17,8 @@ import com.test.roulette.services.IUsersService;
 @Controller
 public class UsersController {
 	
-	SignInDTO userSesion = new SignInDTO();
-	UsersDTO user = new UsersDTO();	
+	private SignInDTO userSesion = new SignInDTO();
+	private UsersDTO user = new UsersDTO();	
 	
 	@Autowired
 	private IUsersService userService;
@@ -72,13 +72,16 @@ public class UsersController {
 	}
 	
 	@RequestMapping(value="/Home")
-	public String showId(Map<String, Object> model) {
+	public String showId(Map<String, Object> model,Model models) {
 		String id = this.userSesion.getId();
 		this.user = userService.findById(id);
 		String name = this.user.getFirstName();
 		String lastName = this.user.getLastName();
+		String founds = this.user.getFounds().toString();
+		model.put("founds", founds);
 		model.put("firstName",name);
 		model.put("lastName",lastName);
+		models.addAttribute("id",id);
 		return "Home";
 	}
 

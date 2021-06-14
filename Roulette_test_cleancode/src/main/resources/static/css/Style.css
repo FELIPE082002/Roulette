@@ -1,5 +1,5 @@
 .principal{
-    background-color: #319cef;
+    background-color: #19181e;
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -12,4 +12,19 @@
     position: absolute;
     top: 0;
     z-index: 5;
+}
+.Principal .title{
+    text-align: center;
+    padding: 10px;
+    color: white;
+}
+.Principal{
+	background-color: #19181e;
+	height: 100vh;
+}
+.open{
+	text-align:  center;
+}
+.disable{
+	display: none;
 }

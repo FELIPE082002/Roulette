@@ -1,7 +1,7 @@
 package com.test.roulette.dto;
 
 public class RoulettesDTO {
-	private String idRoulettes;
+	private int idRoulettes;
 	private Boolean status;
 	private String idUsers_Users;
 	
@@ -9,11 +9,11 @@ public class RoulettesDTO {
 	
 	}
 
-	public String getIdRoulettes() {
+	public int getIdRoulettes() {
 		return idRoulettes;
 	}
 
-	public void setIdRoulettes(String idRoulettes) {
+	public void setIdRoulettes(int idRoulettes) {
 		this.idRoulettes = idRoulettes;
 	}
 
