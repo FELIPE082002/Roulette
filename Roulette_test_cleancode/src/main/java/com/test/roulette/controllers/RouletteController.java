@@ -63,5 +63,18 @@ public class RouletteController{
 		rouletteServices.update(id);
 		return "redirect:/Home";
 	}
+	@RequestMapping(value="/Pay")
+	public String Payments(UsersDTO user,Map<String, Object> model,Model Model) {
+		Model.addAttribute("user",user);
+		model.put("title", "Add Founds");
+		return "Pay";
+	}
 	
+	@RequestMapping(value="/PayForm")
+	public String PaymentsForm(UsersDTO user,Map<String,Object> model) {
+		double founds= this.user.getFounds() + user.getFounds() ;
+		this.user.setFounds(founds);
+		userService.updateFounds(this.user.getIdUser(),this.user.getFounds());
+		return "redirect:HomeForm";
+	}
 }
