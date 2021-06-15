@@ -79,7 +79,6 @@ public class BetsServiceImpl implements IBetsService {
 		return color;
 	}
 
-	
 	@Override
 	public String betWin(String num, String bet, String color) {
 		String decision;
