@@ -27,7 +27,6 @@
     <table class="table table-dark table-borderless">
       <thead>
         <tr>
-          <th scope="col">#</th>
           <th scope="col">Status</th>
           <th scope="col">Enter</th>
           <th scope="col">Close</th>
@@ -35,8 +34,7 @@
       </thead>
       </tbody>
         <tr th:each="r: ${roulette}">
-          <th scope="row" th:text="${r.idRoulettes}"></th>
-          <td th:text="${r.status}"></td>
+          <td th:text="${r.idRoulettes}"></td>
           <td ><a class="btn btn-outline-success .md-2" th:href="@{/Bet/} + ${r.idRoulettes}" type="submit">ENTER</a></td>
           <td ><a class="btn btn-outline-danger" th:href="@{/UpdateForm/} + ${r.idRoulettes}" type="submit">CLOSE</a></td>
         </tr>

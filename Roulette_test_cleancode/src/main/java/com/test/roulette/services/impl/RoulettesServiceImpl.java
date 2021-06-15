@@ -46,4 +46,16 @@ public class RoulettesServiceImpl implements IRoulettesService {
 	public void update(Integer id) {
 		repo.updateRoulette(id);
 	}
+
+	@Override
+	public List<RoulettesDTO> findByid(String id) {
+		List<Object[]> lst = repo.roulettesByUser(id);
+		List<RoulettesDTO> lstr = new ArrayList<RoulettesDTO>();
+		for(Object[] obj : lst) {
+			RoulettesDTO r = new RoulettesDTO();
+			r.setIdRoulettes(Integer.parseInt(obj[0].toString()));
+			lstr.add(r);
+		}
+		return lstr;
+	}
 }

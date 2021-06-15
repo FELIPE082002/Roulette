@@ -33,7 +33,7 @@ public class RouletteController{
 	
 	@RequestMapping(value="/Home", method = RequestMethod.GET)
 	public String consult(Model model,Map<String, Object> Model) {
-		model.addAttribute("roulette",rouletteServices.findAll());
+		model.addAttribute("roulette",rouletteServices.findByid(this.user.getIdUser()));
 		Model.put("founds", founds);
 		Model.put("firstName",name);
 		Model.put("lastName",lastName);

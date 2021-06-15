@@ -80,5 +80,45 @@ public class BetsServiceImpl implements IBetsService {
 	}
 
 	
+	@Override
+	public String betWin(String num, String bet, String color) {
+		String decision;
+		if(bet.equals(num) || bet.equals(color) ) {
+			decision = "WIN";
+		}
+		else {
+			decision = "LOSE";
+		}
+		return decision;
+	}
 
+	@Override
+	public String typeBet(String bet) {
+		String typeBet = "";
+		for(int i = 0;i <= 35;i++) {
+			if(bet == String.valueOf(i)) {
+				typeBet = "number";
+			}else{
+				typeBet = "color";
+			}
+		}
+		return typeBet;
+	}
+
+	@Override
+	public Double winOrLose(String result,String typeBet,Double betValue,Double founds) {
+		Double newBetValue;
+		if(result == "WIN") {
+			if(typeBet == "color") {
+				newBetValue = betValue * 1.8;
+				founds += newBetValue;
+			}else {
+				newBetValue = betValue * 5;
+				founds += newBetValue;
+			}
+		}else {
+			founds -= betValue;
+		}
+		return founds;
+	}
 }

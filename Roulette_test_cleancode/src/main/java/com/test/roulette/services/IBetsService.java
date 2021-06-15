@@ -10,4 +10,7 @@ public interface IBetsService {
 	public List<BetsDTO> findByid(Integer id);
 	public Integer generateNumber();
 	public String generateColor(Integer num);
+	public String betWin(String num,String bet,String color);
+	public String typeBet(String bet);
+	public Double winOrLose(String result,String typeBet,Double betValue,Double founds);
 }

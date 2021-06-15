@@ -31,8 +31,11 @@ public class BetController {
 	
 	RoulettesDTO roulette = new RoulettesDTO();
 	UsersDTO user = new UsersDTO(); 
-	
+	BetsDTO bet = new BetsDTO();
+	boolean exito;
 	String name,lastName,founds,idRoulette;
+	String num = "0";
+	
 	
 	@RequestMapping(value="/Bet/{id}")
 	public String update(@PathVariable(value="id") Integer id) {
@@ -47,6 +50,16 @@ public class BetController {
 		Model.put("founds", founds);
 		Model.put("firstName",name);
 		Model.put("lastName",lastName);
+		Model.put("number",this.num.toString());
+		if(Integer.parseInt(num)%2 == 0) {
+			Model.put("color","roulette bg-danger");
+		}else {
+			Model.put("color","roulette bg-dark");
+		}
+		if(exito) {
+			Model.put("alert", "alert alert-danger");
+		}
+		this.exito = false;
 		return "BetRoulette";
 	}
 	@RequestMapping(value="/BetForm")
@@ -64,18 +77,29 @@ public class BetController {
 	
 	@RequestMapping(value="/openBetForm")
 	public String createBet(BetsDTO bets,Map<String, Object> model) {
-		String num = betService.generateNumber().toString();
+		String redirect="";
+		num = betService.generateNumber().toString();
 		String color = betService.generateColor(Integer.parseInt(num));
 		String bet = bets.getBet();
-		if(bet.equals(num) || bet.equals(color) ) {
-			bets.setResult("WIN");
-		}
-		else {
-			bets.setResult("LOSE");
-		}
+		bets.setResult(betService.betWin(num, bet, color));
 		bets.setIdRoulettesRoulettes(roulette.getIdRoulettes());
-		betService.createBet(bets);
-		return "redirect:BetRoulette";
+		this.bet = bets;
+		if(bets.getBetValue() > this.user.getFounds()) {
+			this.exito = true;
+			redirect = "redirect:BetRoulette";
+		}else {
+			redirect = "redirect:winLoseForm";
+			betService.createBet(bets);
+		}
+		return redirect;
 	}
-	
+	@RequestMapping(value="/winLoseForm")
+	public String PaymentsForm(UsersDTO user,Map<String,Object> model) {
+		
+		String typeValue = betService.typeBet(this.bet.getBet());
+		Double founds = betService.winOrLose(this.bet.getResult(), typeValue, this.bet.getBetValue(),this.user.getFounds() );
+		this.user.setFounds(founds);
+		userService.updateFounds(this.user.getIdUser(),this.user.getFounds());
+		return "redirect:/BetForm";
+	}
 }

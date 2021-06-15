@@ -62,3 +62,13 @@ body{
 	height: 40px;
 	border-radius: 5px;
 }
+.roulette{
+	padding: 2%;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.roulette .number{
+	font-size: 10vh;
+	color:white;
+}
